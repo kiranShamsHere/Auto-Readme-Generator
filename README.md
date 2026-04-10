@@ -36,8 +36,26 @@ So I built this: a one-click workflow that scans all your repos, analyzes the fi
 - **Groq API** — free AI (Llama 3.3 70B model)
 
 ---
+## 📸 Preview
+
+> Workflow running in GitHub Actions:
+
+![Workflow Success](https://img.shields.io/badge/Status-Working-brightgreen?style=for-the-badge&logo=github-actions)
+
+| Feature | Details |
+|---|---|
+| AI Model | Llama 3.3 70B (via Groq) |
+| Avg. time per repo | ~2 seconds |
+| Total run time (70 repos) | ~3-5 minutes |
+| Cost | $0 forever |
+| Trigger | Manual or every Sunday |
+
+```
+```
 
 ## 📂 Project Structure
+
+```
 Auto-Readme-Generator/
 ├── .github/
 │   └── workflows/
@@ -46,7 +64,7 @@ Auto-Readme-Generator/
 │   └── ai_readme_generator.py        # Main Python script
 ├── logs/                             # Auto-generated run logs
 └── README.md
-
+```
 ---
 
 ## 🚀 How to Use It Yourself
