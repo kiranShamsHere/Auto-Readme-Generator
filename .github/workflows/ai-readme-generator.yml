@@ -12,7 +12,7 @@ on:
 
 permissions:
   contents: write
-  repositories: read
+  actions: read
 
 jobs:
   generate-readmes:
