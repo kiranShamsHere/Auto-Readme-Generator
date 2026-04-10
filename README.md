@@ -36,11 +36,10 @@ So I built this: a one-click workflow that scans all your repos, analyzes the fi
 - **Groq API** — free AI (Llama 3.3 70B model)
 
 ---
+
 ## 📸 Preview
 
 > Workflow running in GitHub Actions:
-
-![Workflow Success](https://img.shields.io/badge/Status-Working-brightgreen?style=for-the-badge&logo=github-actions)
 
 | Feature | Details |
 |---|---|
@@ -50,8 +49,7 @@ So I built this: a one-click workflow that scans all your repos, analyzes the fi
 | Cost | $0 forever |
 | Trigger | Manual or every Sunday |
 
-```
-```
+---
 
 ## 📂 Project Structure
 
@@ -65,6 +63,7 @@ Auto-Readme-Generator/
 ├── logs/                             # Auto-generated run logs
 └── README.md
 ```
+
 ---
 
 ## 🚀 How to Use It Yourself
@@ -125,9 +124,36 @@ The workflow runs every **Sunday at 2:00 AM UTC** automatically. Any new repos y
 
 ---
 
+## 🤝 Contributing
+
+Got an idea to make it better? PRs are welcome!
+
+- Add support for other AI providers (OpenAI, Gemini, Ollama)
+- Improve tech stack detection
+- Add README quality scoring before deciding to regenerate
+- Support for org repositories
+
+```bash
+git checkout -b feature/your-idea
+git commit -m "feat: your idea"
+git push origin feature/your-idea
+```
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] README quality checker (skip if already good)
+- [ ] Support GitHub Organizations
+- [ ] Add Ollama support (fully local, zero API)
+- [ ] Custom README templates per language
+- [ ] Telegram/Discord notification after run
+
+---
+
 ## 👤 Author
 
-**Kiran Shams**
+**Kiran Shams**  
 Full Stack Developer & AgriClima AI Consultant
 
 - GitHub: [@kiranShamsHere](https://github.com/kiranShamsHere)
