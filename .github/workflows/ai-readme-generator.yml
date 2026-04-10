@@ -1,0 +1,48 @@
+name: 🤖 AI-Powered README Generator
+
+on:
+  workflow_dispatch:
+    inputs:
+      force_regenerate:
+        description: 'Force regenerate all READMEs (even existing ones)?'
+        required: false
+        default: 'false'
+  schedule:
+    - cron: '0 2 * * 0'
+
+permissions:
+  contents: write
+  repositories: read
+
+jobs:
+  generate-readmes:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout workflow repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install PyGithub anthropic requests pyyaml
+
+      - name: Generate READMEs with AI
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FORCE_REGENERATE: ${{ github.event.inputs.force_regenerate }}
+        run: |
+          python3 scripts/ai_readme_generator.py
+
+      - name: Upload workflow logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: readme-generation-logs
+          path: logs/
+          retention-days: 7
