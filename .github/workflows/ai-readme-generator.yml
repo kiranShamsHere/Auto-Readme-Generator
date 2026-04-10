@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       force_regenerate:
-        description: 'Force regenerate all READMEs?'
+        description: 'Regenerate ALL READMEs (true = yes, false = missing only)'
         required: false
-        default: 'false'
+        default: 'true'
   schedule:
     - cron: '0 2 * * 0'
 
@@ -16,12 +16,12 @@ permissions:
 jobs:
   generate-readmes:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
@@ -30,15 +30,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install PyGithub anthropic
-
-      - name: Check API Key
-        run: |
-          if [ -z "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
-            echo "ERROR: ANTHROPIC_API_KEY is not set!"
-            exit 1
-          else
-            echo "✅ API Key is configured"
-          fi
 
       - name: Generate READMEs
         env:
